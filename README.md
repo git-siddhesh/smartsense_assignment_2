@@ -90,6 +90,23 @@ And save the evaluation results in the `results2.csv` file
 
 ---
 
+## FInal RUN ; PREDICTION
+
+```python
+python app2.py --model vgg --blocks 16
+```
+
+This will open the camera
+
+You need to do 2 things
+
+1. Have a nice smile and ready pose :)
+2. Press `Space` to capture a image
+
+> NOTE: The image will be saved in the `test` folder with the name `test_1.jpg`
+
+
+
 
 
 

@@ -149,6 +149,29 @@ def vgg_3_block():
     model.add(Dense(num_classes, activation='softmax'))    #  output layer with num_classes unit and 'sigmoid' activation (for binary classification)
     return model
 
+def vgg_7_block():
+    # Create a Sequential model object with the name 'vgg_block_3'
+    model = Sequential(name='vgg_block_3')
+    model.add(Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=input_img_size))
+    model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D((2, 2)))
+
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D((2, 2)))
+
+    model.add(Conv2D(256, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(256, (3, 3), activation='relu', padding='same'))
+    model.add(Conv2D(256, (3, 3), activation='relu', padding='same'))
+    model.add(MaxPooling2D((2, 2)))
+
+    # Flatten the output of the convolutional layers
+    model.add(Flatten())
+    model.add(Dense(128, activation='relu'))
+
+    model.add(Dense(num_classes, activation='softmax'))    #  output layer with num_classes unit and 'sigmoid' activation (for binary classification)
+    return model
+
 def vgg_16_transfer_learning():
     # load model
     model = tf.keras.applications.vgg16.VGG16(include_top=False, input_shape=input_img_size)
