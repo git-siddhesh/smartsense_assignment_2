@@ -15,13 +15,11 @@ parser = argparse.ArgumentParser(description='Predicting a class')
 parser.add_argument('--model', type=str, default='vgg', help='model name')
 parser.add_argument('--blocks', type=int, default=16, help='number of blocks 1,3,5,..')
 parser.add_argument('--file', type=str, default=None, help='file name')
-
-# # add num of clicks
-# parser.add_argument('--clicks', type=int, default=5, help='number of clicks')
+parser.add_argument('--imgsize', type=int, default=128, help='image size')
 args = parser.parse_args()
 assert  args.model in ['vgg'], "Current model is not supported please try vgg"
 assert args.blocks in [1,3,16], "Current number of blocks is not supported please try 1,3,16"
-assert os.path.exists(args.file), "File does not exist"
+
 
 # In[]: __________________________ Open the camera __________________________
 
@@ -84,7 +82,7 @@ model.summary()
 # predict the class of the image
 img = cv2.imread(imagePath)
 
-img = cv2.resize(img, (128, 128))
+img = cv2.resize(img, (args.imgsize, args.imgsize))
 img = np.expand_dims(img, axis=0)
 
 class_name_int_map = dict()
