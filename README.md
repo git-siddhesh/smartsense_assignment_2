@@ -9,6 +9,9 @@
     - test - contains the images of different people
 - model - contains the model.h5 files
 
+> Note : plese following the directory structure also mentioned in the below ss
+![Alt text](image.png)
+
 PYTHON NOTEBOOKS and FILES
 - `EDA.ipynb`  - Notebook containing all the EDAs
 - `create_dataset.py` - this file is used to create the dataset {train and test}
